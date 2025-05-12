@@ -1,56 +1,192 @@
 # Hugo configuration file
-title: My Site
+title: 'T3-CIDERS'
 
-# import hextra as module
+defaultContentLanguage: en
+
+enableRobotsTXT: true
+enableEmoji: true
+enableInlineShortcodes: true
+
+outputs:
+  home: [HTML]
+  page: [HTML]
+  section: [HTML, RSS]
+
+# set hugo version & import hextra as module
 module:
+  hugoVersion:
+    extended: true
+    min: "0.147.2"
+    
+  workspace: hugo.work
   imports:
     - path: github.com/imfing/hextra
 
+
+# set markdown engine settings
 markup:
   # allow raw html
   goldmark:
     renderer:
       unsafe: true
-
+  extensions:
+    passthrough:
+      delimiters:
+        block: [['\[', '\]'], ['$$', '$$']]
+        inline: [['\(', '\)']]
+      enable: true
   # enable hextra syntax highlight
   highlight:
     noClasses: false
+  # # enable mathjax
+  # math:
+  #   enable: true
+  #   mathjax:
+  #     version: "3"
+  #     options:
+  #       tex:
+  #         inlineMath: [['$', '$'], ['\\(', '\\)']]
+  #         displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  #       options:
+  #         processEscapes: true
+  #         processEnvironments: true
+  
 
+# navigation
 menu:
   main:
-    - name: Docs
-      pageRef: /docs
+    - name: "Home"
+      identifier: "home"
+      pageRef: /
       weight: 1
-    - name: About
+
+    - name: "About Us"
+      identifier: "about"
       pageRef: /about
       weight: 2
-    - name: Contact ↗
-      url: "https://github.com/imfing"
+
+    - name: "Docs & Publications"
+      identifier: "docs"
+      pageRef: /docs
       weight: 3
-    - name: Search
+
+    - name: "Cohorts"  
+      url: "/cohorts"
+      identifier: "cohorts"
       weight: 4
+
+    - name: "Posts"
+      identifier: "posts"
+      pageRef: /blog
+      weight: 5
+
+    - name: "Search"
+      identifier: "search"
+      weight: 7
       params:
         type: search
-    - name: GitHub
-      weight: 5
+
+    - name: "GitHub"
+      identifier: "github"
+      weight: 8
       url: "https://github.com/imfing/hextra-starter-template"
       params:
         icon: github
-    - name: Twitter
-      weight: 6
-      url: "https://twitter.com/"
+
+    - name: "Twitter"
+      identifier: "twitter"
+      weight: 9
+      url: "https://www.twitter.com/t3ciders"
       params:
         icon: x-twitter
 
+    - name: "LinkedIn"
+      identifier: "linkedin"
+      weight: 10
+      url: "https://www.linkedin.com/in/t3-ciders/"
+      params:
+        icon: linkedin
+
+  sidebar:
+    - identifier: more
+      name: More
+      params:
+        type: separator
+      weight: 1
+
+    - identifier: about
+      name: "About Us"
+      pageRef: "/about"
+      weight: 2
+
+    - identifier: cohorts
+      name: "Cohorts"
+      pageRef: "/cohorts"
+      weight: 3
+
+    - identifier: posts
+      name: "Posts & Announcements"
+      pageRef: "/blog"
+      weight: 3
+
 params:
+  description: "Fostering Cybersecurity Research through Train-the-Trainers in Advanced Computing."
+
+  theme:
+    default: system
+    displayToggle: true
+
+  page:
+    width: wide
+
   navbar:
     displayTitle: true
     displayLogo: false
+    width: wide
 
   footer:
-    displayCopyright: false
+    enable: true
+    displayCopyright: true
     displayPoweredBy: true
+    width: wide
+
+  # Display the last modification date
+  displayUpdatedDate: true
+  dateFormat: "January 2, 2006"
 
   editURL:
     enable: true
-    base: "https://github.com/imfing/hextra-starter-template/edit/main/content"
+    base: "https://github.com/Sephonix/t3-ciders-hugo/edit/main/content"
+    
+  blog:
+    list:
+      displayTags: true
+      # date | lastmod | publishDate | title | weight
+      sortBy: date
+      sortOrder: desc # or "asc"
+    article:
+      displayPagination: true
+
+  highlight:
+    copy:
+      enable: true
+      # hover | always
+      display: hover
+
+  comments:
+    enable: false
+    type: giscus
+
+    # Comments powered by https://giscus.app/
+    # giscus:
+      # repo: Sephonix/t3-ciders-hugo
+      # repoId: 
+      # category: 
+      # categoryId:
+      # mapping: pathname
+      # strict: 0
+      # reactionsEnabled: 1
+      # emitMetadata: 0
+      # inputPosition: top
+      # lang: en
+      # theme: noborder_dark

@@ -1,18 +1,8 @@
 ---
 title: Documentation
-next: first-page
+next: overview
 ---
 
-This is a demo of the theme's documentation layout.
+Welcome to the T3-CIDERS Documentation! Here you can view Project Details, Publications, and more!
 
-## Hello, World!
-
-```go {filename="main.go"}
-package main
-
-import "fmt"
-
-func main() {
-    fmt.Println("Hello, World!")
-}
-```
+Next up, take a look at an overview for the T3-CIDERS Project.
