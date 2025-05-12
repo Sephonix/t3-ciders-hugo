@@ -89,7 +89,7 @@ menu:
     - name: "GitHub"
       identifier: "github"
       weight: 8
-      url: "https://github.com/imfing/hextra-starter-template"
+      url: "https://github.com/sephonix/t3-ciders-hugo"
       params:
         icon: github
 
